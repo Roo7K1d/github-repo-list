@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Repo List</title>
+</head>
+
+<style>
+    body {
+        background: url("/trianglify.png")
+    }
+
+    .nounderline {
+        text-decoration: none !important
+    }
+</style>
+
+<body>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col d-flex justify-content-center w-50 text-light">
+                <h1>
+                    <%= config.title %>
+                </h1>
+            </div>
+        </div>
+        <br>
+        <% repos.forEach(line=> { %>
+            <% var data=line.split(":") %>
+                <% var repo=git.getRepo(data[0], data[1]) %>
+                    <% repo.getDetails().then(function(resultDetails) { %>
+                        <% console.log(resultDetails) %>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center w-50">
+                                <div class="card w-75 shadow bg-body rounded bg-text border border-secondary">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="row">
+                                                    <img src="<%= resultDetails.data.owner.avatar_url %>"
+                                                        class="rounded-circle">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="row align-items-center h-100">
+                                                        <h6 class="fs-3 text fw-normal"><a
+                                                                href="<%= resultDetails.data.owner.html_url %>"
+                                                                class="link-dark nounderline">
+                                                                <%= resultDetails.data.owner.login %>
+                                                            </a></h6>
+                                                    </div>
+                                                    <div class="row align-items-center h-100">
+                                                        <div class="col">
+                                                            <b>
+                                                                <h6 class="fs-3 text fw-normal">
+                                                                    <%- include("../icons/repo.svg") %><a
+                                                                            href="<%= resultDetails.data.html_url %>"
+                                                                            class="link-dark nounderline">
+                                                                            <%= resultDetails.name %>
+                                                            </b></a></h6></b>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row align-items-center h-100">
+                                                    <div class="col-3">
+                                                        <h6 class="fs-5 text">
+                                                            <p class="text-muted fw-lighter">
+                                                                <%- include("../icons/people.svg") %> <br>
+                                                                    <%= resultDetails.data.open_issues %>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h6 class="fs-5 text">
+                                                            <p class="text-muted fw-lighter">
+                                                                <%- include("../icons/issue.svg") %> <br>
+                                                                    <%= resultDetails.data.open_issues %>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h6 class="fs-5 text">
+                                                            <p class="text-muted fw-lighter">
+                                                                <%- include("../icons/star.svg") %> <br>
+                                                                    <%= resultDetails.data.watchers %>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h6 class="fs-5 text">
+                                                            <p class="text-muted fw-lighter">
+                                                                <%- include("../icons/fork.svg") %> <br>
+                                                                    <%= resultDetails.data.forks %>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mx-auto">
+                                                <h6 class="fs-5 text text-muted fw-light">
+                                                    <%= resultDetails.data.description %>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% }) %>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        $('#people').tooltip(options)
+        $('#star').tooltip(options)
+        $('#issue').tooltip(options)
+        $('#fork').tooltip(options)
+        $('#law').tooltip(options)
+        $('#repo').tooltip(options)
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
