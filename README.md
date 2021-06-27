@@ -32,7 +32,11 @@ Since github-repo-list-expressjs is self-hosted, it does not work immediately ou
 
 #### 2.1 Deployment
 
-Once installed, run with `python run.py`. The application will run a first-time boot, and will then be accessible at `127.0.0.1:5000`.
+1. Download the repo
+2. execute ```npm install```
+3. edit the ```config.json``` with your information
+4. edit ```repos.txt``` in this format (<author>/<reponame>)
+5. execute ```node index.js```
 
 
 ### 3.0 How to Contribute
