@@ -10,7 +10,7 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 
 **DEMO**
 
-You can see a live demo at [rootk1d.xyz](https://rootk1d.xyz/projects)
+You can see a live demo at [projects.rootk1d.xyz](https://rootk1d.xyz:3000)
 
 ### 1.0 Introduction
 
