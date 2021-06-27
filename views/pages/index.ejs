@@ -16,116 +16,132 @@
 </head>
 
 <style>
-    body {
-        background: url("/trianglify.png")
-    }
 
     .nounderline {
         text-decoration: none !important
     }
+
+    body{
+        background: black;
+    }
 </style>
 
 <body>
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col d-flex justify-content-center w-50 text-light">
-                <h1>
-                    <%= config.title %>
-                </h1>
+    <div id="particles-js" style="position: fixed; width: 100%; height: 100%;"></div>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col d-flex justify-content-center w-50 text-light">
+                    <h1>
+                        <%= config.title %>
+                    </h1>
+                </div>
             </div>
-        </div>
-        <br>
-        <% repos.forEach(line=> { %>
-            <% var data=line.split(":") %>
-                <% var repo=git.getRepo(data[0], data[1]) %>
-                    <% repo.getDetails().then(function(resultDetails) { %>
-                        <% console.log(resultDetails) %>
-                        <div class="row">
-                            <div class="col d-flex justify-content-center w-50">
-                                <div class="card w-75 shadow bg-body rounded bg-text border border-secondary">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <div class="row">
-                                                    <img src="<%= resultDetails.data.owner.avatar_url %>"
-                                                        class="rounded-circle">
-                                                </div>
-                                            </div>
+            <br>
+            <% fs.readdirSync("./views/repos/").forEach(file => { %>
+            <% var data = fs.readFileSync("./views/repos/" + file)%>
+            <% let repo = JSON.parse(data); %>
+            <div class="row">
+                <div class="col d-flex justify-content-center w-50">
+                    <div class="card w-75 shadow bg-body rounded bg-text border border-secondary">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <img src="<%= repo.owner_avatar_url %>" href="<%= repo.owner_html_url %>"
+                                            class="rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="row align-items-center h-100">
+                                            <h6 class="fs-3 text fw-normal"><a href="<%= repo.owner_html_url %>"
+                                                    class="link-dark nounderline">
+                                                    <%= repo.owner_login %>
+                                                </a></h6>
+                                        </div>
+                                        <div class="row align-items-center h-100">
                                             <div class="col">
-                                                <div class="row">
-                                                    <div class="row align-items-center h-100">
-                                                        <h6 class="fs-3 text fw-normal"><a
-                                                                href="<%= resultDetails.data.owner.html_url %>"
-                                                                class="link-dark nounderline">
-                                                                <%= resultDetails.data.owner.login %>
-                                                            </a></h6>
-                                                    </div>
-                                                    <div class="row align-items-center h-100">
-                                                        <div class="col">
-                                                            <b>
-                                                                <h6 class="fs-3 text fw-normal">
-                                                                    <%- include("../icons/repo.svg") %><a
-                                                                            href="<%= resultDetails.data.html_url %>"
-                                                                            class="link-dark nounderline">
-                                                                            <%= resultDetails.name %>
-                                                            </b></a></h6></b>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="row align-items-center h-100">
-                                                    <div class="col-3">
-                                                        <h6 class="fs-5 text">
-                                                            <p class="text-muted fw-lighter">
-                                                                <%- include("../icons/people.svg") %> <br>
-                                                                    <%= resultDetails.data.open_issues %>
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <h6 class="fs-5 text">
-                                                            <p class="text-muted fw-lighter">
-                                                                <%- include("../icons/issue.svg") %> <br>
-                                                                    <%= resultDetails.data.open_issues %>
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <h6 class="fs-5 text">
-                                                            <p class="text-muted fw-lighter">
-                                                                <%- include("../icons/star.svg") %> <br>
-                                                                    <%= resultDetails.data.watchers %>
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <h6 class="fs-5 text">
-                                                            <p class="text-muted fw-lighter">
-                                                                <%- include("../icons/fork.svg") %> <br>
-                                                                    <%= resultDetails.data.forks %>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mx-auto">
-                                                <h6 class="fs-5 text text-muted fw-light">
-                                                    <%= resultDetails.data.description %>
-                                                </h6>
+                                                <b>
+                                                    <h6 class="fs-3 text fw-normal">
+                                                        <%- include("../icons/repo.svg") %><a
+                                                            href="<%= repo.repo_html_url %>"
+                                                            class="link-dark nounderline">
+                                                            <%= repo.repo_name %>
+                                                </b></a></h6></b>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <div class="row align-items-center h-100">
+                                        <div class="row mx-auto">
+                                            <div class="col-3">
+                                                <h6 class="fs-5 text">
+                                                    <p class="text-muted fw-lighter">
+                                                        <a
+                                                            href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/graphs/contributors"><%- include("../icons/people.svg") %></a>
+                                                        <br>
+                                                        <%= repo.repo_contributors %>
+                                                        <% if (repo.repo_contributors == 30) { %>
+                                                        <%- include("../icons/alert.svg") %>
+                                                        <% } %>
+                                                </h6>
+                                            </div>
+                                            <div class="col-3">
+                                                <h6 class="fs-5 text">
+                                                    <p class="text-muted fw-lighter">
+                                                        <a
+                                                            href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/issues"><%- include("../icons/issue.svg") %></a>
+                                                        <br>
+                                                        <%= repo.repo_open_issues %>
+                                                </h6>
+                                            </div>
+                                            <div class="col-3">
+                                                <h6 class="fs-5 text">
+                                                    <p class="text-muted fw-lighter">
+                                                        <a
+                                                            href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/stargazers"><%- include("../icons/star.svg") %></a>
+                                                        <br>
+                                                        <%= repo.repo_watchers %>
+                                                </h6>
+                                            </div>
+                                            <div class="col-3">
+                                                <h6 class="fs-5 text">
+                                                    <p class="text-muted fw-lighter">
+                                                        <a
+                                                            href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/network/members"><%- include("../icons/fork.svg") %></a>
+                                                        <br>
+                                                        <%= repo.repo_forks %>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-auto">
+                                            <span class="badge"
+                                                style="background: <%= repo.repo_lang_color %>; text-shadow: 0 0 3px black"><%= repo.repo_lang %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mx-auto">
+                                    <h6 class="fs-5 text text-muted fw-light">
+                                        <%= repo.repo_desc %>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
-                        <% }) %>
-                            <% }) %>
-    </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <% }) %>
+        </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
     <script>
         $(function () {
@@ -137,7 +153,11 @@
         $('#fork').tooltip(options)
         $('#law').tooltip(options)
         $('#repo').tooltip(options)
+        $('#alert').tooltip(options)
     </script>
+
+    <script type="text/javascript" src="pages/particles/particles.js"></script>
+    <script src="pages/particles/app.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
