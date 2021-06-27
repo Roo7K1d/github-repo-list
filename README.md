@@ -34,7 +34,7 @@ Since github-repo-list-expressjs is self-hosted, it does not work immediately ou
 
 1. Download the repo
 2. execute ```npm install```
-3. edit the ```config.json``` with your information
+3. edit the ```config.json``` with your information (github token: https://github.com/settings/tokens)
 4. edit ```repos.txt``` in this format (<author>/<reponame>)
 5. execute ```node index.js```
 
