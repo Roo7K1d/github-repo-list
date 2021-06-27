@@ -15,9 +15,7 @@ const port = 3000;
 
 var config = JSON.parse(fs.readFileSync("config.json"));
 
-var git = new github({
-    token: "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"
-});
+var git = new github();
 
 
 app.set("view engine", "ejs");
