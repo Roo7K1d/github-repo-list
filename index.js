@@ -15,8 +15,7 @@ const port = 3000;
 
 var config = JSON.parse(fs.readFileSync("config.json"));
 
-var git = new github();
-
+var git = new github({ token: config.token });
 
 app.set("view engine", "ejs");
 
@@ -30,9 +29,11 @@ rl.on('line', async function (line) {
         fs.writeFileSync(`./views/repos/${data[1].toString()}.json`, "{}")
     }
     let file = editJsonFile(`./views/repos/${data[1]}.json`);
+
     await repo.getContributors().then(async function (result) {
         await file.set("repo_contributors", result.data.length)
     })
+
     await repo.getDetails().then(async function (resultDetails) {
 
         var obj = JSON.parse(fs.readFileSync("./views/lang_colors.json"));
