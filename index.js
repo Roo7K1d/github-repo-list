@@ -25,10 +25,10 @@ app.use(express.static("views"));
 rl.on('line', async function (line) {
     var data = line.split(":")
     var repo = git.getRepo(data[0], data[1])
-    if (!fs.existsSync(`./views/repos/${data[1]}.json`)) {
-        fs.writeFileSync(`./views/repos/${data[1].toString()}.json`, "{}")
+    if (!fs.existsSync(`${__dirname}/views/repos/${data[1]}.json`)) {
+        fs.writeFileSync(`${__dirname}/views/repos/${data[1].toString()}.json`, "{}")
     }
-    let file = editJsonFile(`./views/repos/${data[1]}.json`);
+    let file = editJsonFile(`${__dirname}/views/repos/${data[1]}.json`);
 
     await repo.getContributors().then(async function (result) {
         await file.set("repo_contributors", result.data.length)
@@ -36,7 +36,7 @@ rl.on('line', async function (line) {
 
     await repo.getDetails().then(async function (resultDetails) {
 
-        var obj = JSON.parse(fs.readFileSync("./views/lang_colors.json"));
+        var obj = JSON.parse(fs.readFileSync(__dirname + "/views/lang_colors.json"));
         var langColor = obj[resultDetails.data.language];
 
         await file.set("owner_avatar_url", resultDetails.data.owner.avatar_url)
