@@ -64,4 +64,5 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
     console.log("Webserver started at http://localhost:" + port);
+    console.log("If you like this project please remember to give it a star :) https://github.com/roo7k1d/github-repo-list-expressjs");
 })
