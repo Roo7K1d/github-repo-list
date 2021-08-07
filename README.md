@@ -10,7 +10,9 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 
 **DEMO**
 
-You can see a live demo at [rootk1d.xyz](https://rootk1d.xyz/projects)
+![image](https://i.ibb.co/HnbhHWm/Download.png)
+
+You can see a live demo at [projects.rootk1d.xyz](https://rootk1d.xyz:3000)
 
 ### 1.0 Introduction
 
@@ -34,8 +36,8 @@ Since github-repo-list-expressjs is self-hosted, it does not work immediately ou
 
 1. Download the repo
 2. execute ```npm install```
-3. edit the ```config.json``` with your information
-4. edit ```repos.txt``` in this format (<author>/<reponame>)
+3. edit the ```config.json``` with your information (github token: https://github.com/settings/tokens)
+4. edit ```repos.txt``` in this format (\<author\>/\<reponame\>)
 5. execute ```node index.js```
 
 
