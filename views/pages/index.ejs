@@ -25,12 +25,12 @@
     }
 
     #sticky-footer {
-  flex-shrink: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%
-}
+        flex-shrink: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%
+    }
 </style>
 
 <body>
@@ -39,7 +39,8 @@
         <br>
         <div class="row">
             <div class="col d-flex justify-content-center w-50 text-light">
-                <h1 class="fs-1 fw-bold" style="background: linear-gradient(to right, rgba(102, 126, 234), rgba(118, 75, 162)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <h1 class="fs-1 fw-bold"
+                    style="background: linear-gradient(to right, rgba(102, 126, 234), rgba(118, 75, 162)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                     <%= config.title %>
                 </h1>
             </div>
@@ -75,6 +76,27 @@
                                                         href="<%= repo.repo_html_url %>" class="link-dark nounderline">
                                                         <%= repo.repo_name %>
                                             </b></a></h6></b>
+                                            <% if (repo.repo_license !== null) {%>
+                                                <a
+                                                href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/blob/master/LICENSE"><span
+                                                    class="badge bg-success" id="latestRelease" data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Licensed Under"><%- include("../icons/law.svg") %>
+                                                    <%= repo.repo_license %></span></a>
+                                            <% } %>
+                                            <% if (repo.repo_latest_release !== "undefined") {%>
+                                            <a
+                                                href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/releases"><span
+                                                    class="badge bg-success" id="latestRelease" data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Latest Release"><%- include("../icons/tag.svg") %>
+                                                    <%= repo.repo_latest_release %></span></a>
+                                            <% } %>
+                                            <a href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/releases"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal-<%= repo.repo_name %>"><span
+                                                    class="badge bg-success"><%- include("../icons/book.svg") %>
+                                                    README.md</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -89,9 +111,6 @@
                                                         href="https://github.com/<%= repo.owner_login %>/<%= repo.repo_name %>/graphs/contributors"><%- include("../icons/people.svg") %></a>
                                                     <br>
                                                     <%= repo.repo_contributors %>
-                                                    <% if (repo.repo_contributors == 30) { %>
-                                                    <%- include("../icons/alert.svg") %>
-                                                    <% } %>
                                             </h6>
                                         </div>
                                         <div class="col-3">
@@ -122,16 +141,53 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <div class="row mx-auto">
-                                        <span class="badge"
-                                            style="background: <%= repo.repo_lang_color %>; text-shadow: 0 0 3px black"><%= repo.repo_lang %></span>
+                                    <div class="row" style="width: 105%; padding: 0; overflow-x: auto;">
+                                        <% var langs = repo.repo_langlist %>
+                                        <% var colors = JSON.parse(fs.readFileSync("./views/lang_colors.json")); %>
+                                        <% var totalBytes = 0; %>
+                                        <% for (key in langs) { %>
+                                        <% totalBytes += langs[key] %>
+                                        <% } %>
+                                        <% for (key in langs) { %>
+                                        <% langs[key] = ((langs[key])/(totalBytes)*100).toFixed(1) %>
+                                        <% } %>
+                                        <% for (key in langs) { %>
+                                        <% var i = Object.keys(langs).indexOf(key); %>
+                                        <% var totalEntries = Object.keys(langs).length; %>
+                                        <% var langName = key %>
+                                        <% var langColor = colors[langName]; %>
+                                        <% if (totalEntries == 1) { %>
+                                        <span class="badge" id="lang" data-toggle="tooltip" data-placement="top"
+                                            title="<%= langName %> - <%= langs[key] %>%"
+                                            style="background: <%= langColor %>; text-shadow: 0 0 3px black; width: <%= langs[key] %>%; margin: 0; padding-left: 0; padding-right: 0;">
+                                        </span>
+                                        <% } %>
+                                        <% if (parseInt(i) == 0 && totalEntries > 1) { %>
+                                        <span class="badge" id="lang" data-toggle="tooltip" data-placement="top"
+                                            title="<%= langName %> - <%= langs[key] %>%"
+                                            style="border-bottom-right-radius: 0; border-top-right-radius: 0; background: <%= langColor %>; text-shadow: 0 0 3px black; width: <%= langs[key] %>%; margin: 0; padding-left: 0; padding-right: 0;">
+                                        </span>
+                                        <% } else if (i == totalEntries-1 && totalEntries > 1) { %>
+                                        <span class="badge" id="lang" data-toggle="tooltip" data-placement="top"
+                                            title="<%= langName %> - <%= langs[key] %>%"
+                                            style="border-bottom-left-radius: 0; border-top-left-radius: 0; background: <%= langColor %>; text-shadow: 0 0 3px black; width: <%= langs[key] %>%; margin: 0; padding-left: 0; padding-right: 0;">
+                                        </span>
+                                        <% } else if (totalEntries > 1) { %>
+                                        <span class="badge" id="lang" data-toggle="tooltip" data-placement="top"
+                                            title="<%= langName %> - <%= langs[key] %>%"
+                                            style="background: <%= langColor %>; text-shadow: 0 0 3px black; width: <%= langs[key] %>%; border-radius: 0; margin: 0; padding-left: 0; padding-right: 0;">
+                                        </span>
+                                        <% } %>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mx-auto">
-                                <h6 class="fs-5 text text-muted fw-light" style="padding-top: 15px">
-                                    <%= repo.repo_desc %>
-                                </h6>
+                                <div class="col">
+                                    <h6 class="fs-5 text text-muted fw-light" style="padding-top: 15px">
+                                        <%= repo.repo_desc %>
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -141,16 +197,37 @@
         <br>
         <% }) %>
     </div>
+    <% fs.readdirSync("./views/repos/").forEach(file => { %>
+    <% var data = fs.readFileSync("./views/repos/" + file)%>
+    <% let repo = JSON.parse(data); %>
+        <div class="modal fade" id="modal-<%= repo.repo_name %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-<%= repo.repo_name %>">README.md - <%= repo.repo_name %></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <%- include("../markdowns/" + repo.repo_name + ".html") %>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
     <br>
     <br>
     <br>
     <br>
     <br>
     <footer id="sticky-footer" class="py-4 text-white" style="background: #080808;">
-    <div class="container text-center">
-      <small>Copyright <%= new Date().getFullYear() %> &copy; RootK1d Development (Licensed under MIT)</small>
-    </div>
-  </footer>
+        <div class="container text-center">
+            <small>Copyright <%= new Date().getFullYear() %> &copy; RootK1d Development (Licensed under MIT)</small>
+        </div>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -170,6 +247,8 @@
         $('#law').tooltip(options)
         $('#repo').tooltip(options)
         $('#alert').tooltip(options)
+        $('#lang').tooltip(options)
+        $('#latestRelease').tooltip(options)
     </script>
 
     <script type="text/javascript" src="pages/particles/particles.js"></script>
