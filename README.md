@@ -1,5 +1,5 @@
 <img src="https://cdn.discordapp.com/attachments/820416224005586945/886628703638028348/github-repo-list.png">
-<p align="center"><i>An open-source, self-hosted and easy to use webserver that lists your GitHub projects.</i></p>
+<p align="center"><i>A beautiful bootstrap open-source, self-hosted and easy to use webserver that lists your GitHub projects.</i></p>
 <div align="center">
   <a href="https://github.com/roo7k1d/github-repo-list/stargazers"><img src="https://img.shields.io/github/stars/roo7k1d/github-repo-list?color=yellow" alt="Stars Badge"/></a>
 <a href="https://github.com/roo7k1d/github-repo-list/network/members"><img src="https://img.shields.io/github/forks/roo7k1d/github-repo-list?color=orange" alt="Forks Badge"/></a>
