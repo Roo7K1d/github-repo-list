@@ -14,7 +14,7 @@
 <a href="https://github.com/roo7k1d/github-repo-list/commits"><img src="https://img.shields.io/github/last-commit/roo7k1d/github-repo-list" alt="License Badge"/></a>
 </div>
 <br>
-<p align="center"><a href="https://github.com/roo7k1dgithub-repo-list/issues">Report a Bug</a> | <a href="https://github.com/roo7k1d/github-repo-list/issues">Request a New Feature</a> | <a href="https://github.com/github-repo-list/pulls">Help Develop This Project</a></p>
+<p align="center"><a href="https://github.com/roo7k1dgithub-repo-list/issues">Report a Bug</a> | <a href="https://github.com/roo7k1d/github-repo-list/issues">Request a New Feature</a> | <a href="https://github.com/github-repo-list/pulls">Help Develop This Project</a> | <a href="https://ko-fi.com/RootK1d">Fund Me</a></p>
 <p align="center"><i>Loved the project? Please consider giving a star</i> :)</p>
 
 <hr>
