@@ -68,6 +68,7 @@ You are not allowed to remove any part of the footer. That includes all of the i
 
 ## Todo (See Issues with tag "help wanted")
 - Add support for gists / projects / wikis
+- fix README preview (displays HTML tags instead of converting them)
 
 <hr>
 
