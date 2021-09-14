@@ -20,7 +20,7 @@
 <hr>
 
 ## Installation Guide
-Since D0x-K1t-v2 is self-hosted, it does not work immediately out-of-box.
+Since github-repo-list is self-hosted, it does not work immediately out-of-box.
 <br>
 <br>
 - Download the repo
@@ -40,7 +40,7 @@ Live demo is work in progress!
 <hr>
 
 ## Support
-For support you can create an issue [here on GitHub](https://github.com/rootk1d/pad-demo/issues) or you can join my [Discord](https://discord.gg/QQaWvMkFbs).
+For support you can create an issue [here on GitHub](https://github.com/rootk1d/github-repo-list/issues) or you can join my [Discord](https://discord.gg/QQaWvMkFbs).
 
 <hr>
 
