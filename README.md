@@ -35,7 +35,7 @@ Since github-repo-list is self-hosted, it does not work immediately out-of-box.
 ## Demo
 <img src="https://cdn.discordapp.com/attachments/820416224005586945/886624574698041414/unknown.png">
 <br>
-Live demo is work in progress!
+Click <a href="https://rootk1d.xyz/repos">here</a> for a live preview of the repo.
 
 <hr>
 
