@@ -1,0 +1,20 @@
+{
+  "repo_contributors": "2",
+  "repo_langlist": {
+    "PHP": 74282,
+    "JavaScript": 25273,
+    "CSS": 562
+  },
+  "owner_avatar_url": "https://avatars.githubusercontent.com/u/59444046?v=4",
+  "owner_login": "femto-code",
+  "owner_html_url": "https://github.com/femto-code",
+  "repo_html_url": "https://github.com/femto-code/Raspberry-Pi-Dashboard",
+  "repo_name": "Raspberry-Pi-Dashboard",
+  "repo_open_issues": "3",
+  "repo_watchers": "40",
+  "repo_forks": "7",
+  "repo_desc": "Web-based dashboard interface to inspect Raspberry Pi hardware and software with no extra software required.",
+  "repo_lang": "PHP",
+  "repo_license": "GPL-3.0",
+  "repo_latest_release": "v1.1.0"
+}

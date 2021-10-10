@@ -1,0 +1,19 @@
+{
+  "repo_contributors": 1,
+  "repo_langlist": {
+    "JavaScript": 49549,
+    "EJS": 15411
+  },
+  "owner_avatar_url": "https://avatars.githubusercontent.com/u/47664151?v=4",
+  "owner_login": "Roo7K1d",
+  "owner_html_url": "https://github.com/Roo7K1d",
+  "repo_html_url": "https://github.com/Roo7K1d/github-repo-list",
+  "repo_name": "github-repo-list",
+  "repo_open_issues": "2",
+  "repo_watchers": "0",
+  "repo_forks": "0",
+  "repo_desc": "A beautiful bootstrap open-source, self-hosted and easy to use webserver that lists your GitHub projects.",
+  "repo_lang": "JavaScript",
+  "repo_license": "MIT",
+  "repo_latest_release": "v1.0"
+}

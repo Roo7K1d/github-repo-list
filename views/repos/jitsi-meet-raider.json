@@ -1,0 +1,18 @@
+{
+  "repo_contributors": 1,
+  "repo_langlist": {
+    "JavaScript": 5944
+  },
+  "owner_avatar_url": "https://avatars.githubusercontent.com/u/47664151?v=4",
+  "owner_login": "Roo7K1d",
+  "owner_html_url": "https://github.com/Roo7K1d",
+  "repo_html_url": "https://github.com/Roo7K1d/Jitsi-Meet-Raider",
+  "repo_name": "Jitsi-Meet-Raider",
+  "repo_open_issues": "0",
+  "repo_watchers": "2",
+  "repo_forks": "0",
+  "repo_desc": "For raiding Jitsi Meet conferences with bots with features like earrape, chat spam and synced spoofed camera feed.",
+  "repo_lang": "JavaScript",
+  "repo_license": null,
+  "repo_latest_release": "v1.0.2"
+}

@@ -1,0 +1,20 @@
+{
+  "repo_contributors": 1,
+  "repo_langlist": {
+    "CSS": 90657,
+    "PHP": 43653,
+    "JavaScript": 10745
+  },
+  "owner_avatar_url": "https://avatars.githubusercontent.com/u/47664151?v=4",
+  "owner_login": "Roo7K1d",
+  "owner_html_url": "https://github.com/Roo7K1d",
+  "repo_html_url": "https://github.com/Roo7K1d/RP-Police-Database",
+  "repo_name": "RP-Police-Database",
+  "repo_open_issues": "0",
+  "repo_watchers": "1",
+  "repo_forks": "0",
+  "repo_desc": "An LSPD database for logging the crimes of citizens. Designed for GTA:V RP.",
+  "repo_lang": "CSS",
+  "repo_license": null,
+  "repo_latest_release": "v1.0.1"
+}

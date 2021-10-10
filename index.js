@@ -3,7 +3,6 @@ const github = require("github-api");
 const fs = require("fs");
 const readline = require('readline');
 const editJsonFile = require("edit-json-file");
-const MarkdownIt = require('markdown-it');
 
 const {
     Octokit
@@ -77,7 +76,9 @@ rl.on('line', async function (line) {
                     Accept: "application/vnd.github.VERSION.raw"
                 }
             }).then(async function (result) {
-                md = new MarkdownIt();
+                md = new require("markdown-it")({
+                    html: true
+                });
                 var resultMd = md.render(result.data);
 
                 fs.writeFileSync(`${__dirname}/views/markdowns/${resultDetails.data.name}.html`, resultMd)

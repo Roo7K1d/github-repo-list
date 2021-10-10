@@ -1,0 +1,150 @@
+<p><img src="img/logo.png?raw=true" alt="Intro" title="Raspberry Pi Dashboard - Project Logo"></p>
+<div align="center">View and manage your Pi system through your web browser!</div>
+<p align="center"><sub>Written in plain HTML5, CSS3, JavaScript and PHP (backend). <b>No extra software required!</b></sub></p>
+<br>
+<div align="center">
+  <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/stargazers"><img src="https://img.shields.io/github/stars/femto-code/Raspberry-Pi-Dashboard?color=yellow" alt="Stars Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/network/members"><img src="https://img.shields.io/github/forks/femto-code/Raspberry-Pi-Dashboard?color=orange" alt="Forks Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/pulls"><img src="https://img.shields.io/github/issues-pr/femto-code/Raspberry-Pi-Dashboard" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues"><img src="https://img.shields.io/github/issues/femto-code/Raspberry-Pi-Dashboard" alt="Issues Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/femto-code/Raspberry-Pi-Dashboard?color=2b9348"></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/blob/master/LICENSE"><img src="https://img.shields.io/github/license/femto-code/Raspberry-Pi-Dashboard?color=2b9348" alt="License Badge"/></a>
+<br>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/"><img src="https://img.shields.io/github/repo-size/femto-code/Raspberry-Pi-Dashboard?color=important" alt="License Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/"><img src="https://img.shields.io/tokei/lines/github/femto-code/Raspberry-Pi-Dashboard?color=yellowgreen" alt="License Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/releases"><img src="https://img.shields.io/github/v/release/femto-code/Raspberry-Pi-Dashboard?color=success" alt="License Badge"/></a>
+<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/commits"><img src="https://img.shields.io/github/last-commit/femto-code/Raspberry-Pi-Dashboard" alt="License Badge"/></a>
+</div>
+<br>
+<p align="center"><a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues">Report a Bug</a> | <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues">Request a New Feature</a> | <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/pulls">Help Develop This Project</a></p>
+<p align="center"><i>Loved the project? Please consider giving a star</i> :)</p>
+<h2>Features</h2>
+<ul>
+<li>Live surveillance of RPi hardware (CPU Temperature, frequency, loads etc.) with customizable warning thresholds</li>
+<li>Detailed software/hardware information (web server, PHP, storage / partition workload, core voltage, plugged USB devices, kernel version, model specifications, OS, CPU, network config)</li>
+<li>Protected access with password login (default: root) (<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard#configure-password-manually">configure password</a>)</li>
+<li>Power (shutdown/reboot) Raspberry Pi with schedule options (<a href="https://github.com/femto-code/Raspberry-Pi-Dashboard#enable-shutdown--reboot-optional">setup instructions</a>)</li>
+<li>Mobile WebApp integration</li>
+<li>Responsive design layout allows usage on all screen sizes</li>
+<li>Dark Theme (manual / auto)</li>
+</ul>
+<blockquote>
+<p>Update your existing dashboard setup by navigating to project root folder and running <code>git pull</code> in the terminal.</p>
+</blockquote>
+<h2>❗ If you run into issues and getting error message &quot;Permission denied&quot; or &quot;unable to open file&quot; <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues/22">see issue #22</a> for help and instructions to solve. ❗</h2>
+<h2>Screenshots</h2>
+<p><img src="img/preview.png?raw=true" alt="Preview" title="Preview of dashboard in a web browser"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Mobile Light Theme</th>
+<th style="text-align:center">Mobile Dark Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="img/m2.png?raw=true" alt=""></td>
+<td style="text-align:center"><img src="img/m1.png?raw=true" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h2>Download and Installation</h2>
+<h3>Prequisites</h3>
+<ul>
+<li>Running Web Server (e.g. Lighttpd or Apache) with PHP installed (&gt;=v5.6)</li>
+<li>Installed Git (comes preinstalled on Raspberry Pi OS / formerly Raspbian as well as other linux distros)</li>
+<li>Valid permissions within /var/www/html</li>
+</ul>
+<h4>Valid permissions</h4>
+<p>The following configuration is the commonly recommended set-up for your web server folder and is meant to be secure to a certain level (with the minimum need of permissions):</p>
+<ol>
+<li>
+<p>First, make sure <code>www-data</code> group exists and add your current login:<br>
+<em>(if you are using another distro than Raspbian/Raspberry Pi OS the username of web server can differ)</em><br>
+<code>sudo groupadd www-data</code><br>
+<code>sudo usermod -a -G www-data www-data</code><br>
+<code>sudo usermod -a -G www-data &lt;yourlogin&gt;</code> (replace <code>&lt;yourlogin&gt;</code> with your username)</p>
+</li>
+<li>
+<p>Second, give the ownership of web folder to the <code>www-data</code> group and <em>your</em> user.<br>The following commands ensure that you have <em>full</em> access on the files within the web folder while group members (<code>www-data</code>) cannot edit/write for security reasons:<br>
+<code>sudo chown -R &lt;yourlogin&gt;:www-data /var/www/html</code> (replace <code>&lt;yourlogin&gt;</code> with your username)<br>
+<code>sudo chmod -R 755 /var/www/html</code></p>
+</li>
+<li>
+<p>Reboot your RPi (for permission changes to take effect)</p>
+</li>
+</ol>
+<h3>Setup project</h3>
+<ul>
+<li>navigate to your web folder (<code>cd /var/www/html</code>)</li>
+<li>clone this Github repository: <code>git clone https://github.com/femto-code/Rasberry-Pi-Dashboard.git &lt;your_subfolder_name&gt;</code></li>
+<li>Run
+<ul>
+<li><code>sudo chown -R &lt;yourlogin&gt;:www-data /var/www/html/&lt;your_subfolder_name&gt;</code> and<br>(replace <code>&lt;yourlogin&gt;</code> with your username)</li>
+<li><code>sudo chmod -R 775 /var/www/html/&lt;your_subfolder_name&gt;</code></li>
+</ul>
+</li>
+<li>to set correct permissions (this will allow the <code>www-data</code> user exclusively to write/edit files <strong>only</strong> in your <em>dashboard folder</em>)!</li>
+</ul>
+<blockquote>
+<p>An erroneous permission typically results in the situation where the user responsible for web server (e.g. <code>www-data</code>) does not have rights to create/modify the local config file for saving your dashboard adjustments (your custom thresholds, password etc.). In this case, the dashboard won't work at all and throwing this error.</p>
+</blockquote>
+<ul>
+<li><strong>DONE!</strong> Open web browser with URL: <code>http://IP_OF_YOUR_RPI/&lt;your_subfolder_name&gt;</code></li>
+</ul>
+<blockquote>
+<p>Note: replace &lt;your_subfolder_name&gt; with your choice of subfolder name accordingly. You can also rename the base folder at any time afterwards.</p>
+</blockquote>
+<h2>Configuration / Help</h2>
+<h4>Core voltage (or other hardware info) output is not shown (optional)</h4>
+<ul>
+<li>If you want to see advanced hardware information (core voltage, model information) on your dashboard instance:<br>run <code>sudo usermod -aG video www-data</code> in a terminal</li>
+</ul>
+<blockquote>
+<p>If you do not use Raspbian (or any other RasPi distro) like Ubuntu, you do have to install <code>libraspberrypi-bin</code> by running <code>sudo apt install libraspberrypi-bin</code>.</p>
+</blockquote>
+<ul>
+<li>background: The <code>vcgencmd</code> command (specifically dedicated to RPi firmware) is a system command that requires certain hardware rights. Therefore one has to grant this particular right (to read hardware info) to e.g. <code>www-data</code> (under which web server is running). This is achived by adding this user to a system group called video, which the standard user pi is part of by default.</li>
+<li>in case of problems: please comment on <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues/12">#12</a> (or <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues/new">new issue</a>)</li>
+</ul>
+<h4>Enable shutdown / reboot (optional)</h4>
+<blockquote>
+<p>Recommended only, if your RPi is <strong>not</strong> accessible over the Internet!</p>
+</blockquote>
+<p>In order to use the remote power functionality you have to give the user <code>www-data</code> advanced rights for running one specific command:</p>
+<ol>
+<li>Run <code>sudo visudo</code> to open the editor for adjusting user rights</li>
+<li>Be careful what you change here! Just add the following at the <strong>end</strong> of the file: <code>www-data ALL=NOPASSWD: /sbin/shutdown</code></li>
+<li>Restart your Pi and now shutdown from another device (connected to same local network like your Pi) is possible</li>
+</ol>
+<h4>Configure password (manually)</h4>
+<blockquote>
+<p>You should change the default password (which is <strong>root</strong>) and a choose a more secure one by following the following steps.</p>
+</blockquote>
+<blockquote>
+<p>Please be aware that there is a more user-friendly way by using the Dashboards options modal. The manual way of changing the password might be helpful</p>
+<ul>
+<li>in case of wrong permissions (<code>www-data</code> cannot change settings for you - <a href="https://github.com/femto-code/Raspberry-Pi-Dashboard/issues/22">see issue #22</a> for help and instructions to solve)</li>
+<li>if password is unknown (and access to Dashboard therefore impossible)</li>
+</ul>
+</blockquote>
+<ol>
+<li>Go to <a href="https://www.md5-generator.de/">https://www.md5-generator.de/</a> and generate the MD5 encyrpted passphrase.</li>
+<li>Open <code>local.config</code> (dynamically created at first start) and apply your custom passphrase string (generated in step 1) as follows (don't alter other lines):</li>
+</ol>
+<pre><code>[...]
+'general' =&gt;
+  array (
+    [...]
+    'pass' =&gt; 'YOUR_MD5_PASSPHRASE_HERE',
+    [...]
+  ),
+  [...]
+</code></pre>
+<ol start="4">
+<li>Remember password and enjoy!</li>
+</ol>
+<h2>License</h2>
+<p><a href="LICENSE"><strong>GPL-3.0</strong></a>.</p>
+<hr>
+<p><code>Raspberry Pi and the Raspberry Pi Logo are registred trademarks of the Raspberry Pi Foundation</code></p>

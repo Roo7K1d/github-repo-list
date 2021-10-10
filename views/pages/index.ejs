@@ -197,6 +197,11 @@
         <br>
         <% }) %>
     </div>
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
     <% fs.readdirSync("./views/repos/").forEach(file => { %>
     <% var data = fs.readFileSync("./views/repos/" + file)%>
     <% let repo = JSON.parse(data); %>
@@ -252,7 +257,7 @@
     </script>
 
     <script type="text/javascript" src="pages/particles/particles.js"></script>
-    <script src="pages/particles/app.js"></script>
+    <script type="text/javascript" src="pages/particles/app.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

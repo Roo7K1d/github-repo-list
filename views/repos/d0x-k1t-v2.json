@@ -1,0 +1,21 @@
+{
+  "repo_contributors": "2",
+  "repo_langlist": {
+    "Python": 12685,
+    "HTML": 6821,
+    "JavaScript": 260,
+    "Shell": 239
+  },
+  "owner_avatar_url": "https://avatars.githubusercontent.com/u/47664151?v=4",
+  "owner_login": "Roo7K1d",
+  "owner_html_url": "https://github.com/Roo7K1d",
+  "repo_html_url": "https://github.com/Roo7K1d/D0x-K1t-v2",
+  "repo_name": "D0x-K1t-v2",
+  "repo_open_issues": "1",
+  "repo_watchers": "12",
+  "repo_forks": "8",
+  "repo_desc": "Active reconaissance, information gathering and OSINT built in a portable web application test.",
+  "repo_lang": "Python",
+  "repo_license": "MIT",
+  "repo_latest_release": "v1.0"
+}

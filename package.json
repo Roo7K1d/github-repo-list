@@ -20,6 +20,7 @@
     "@octokit/core": "^3.5.1",
     "circular-json": "^0.5.9",
     "edit-json-file": "^1.6.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "github-api": "^3.4.0",
     "http": "0.0.1-security",
