@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/820416224005586945/886628703638028348/github-repo-list.png">
+<img src="https://rootk1d.xyz/github/repo-list/banner.png">
 <p align="center"><i>A beautiful bootstrap open-source, self-hosted and easy to use webserver that lists your GitHub projects.</i></p>
 <div align="center">
   <a href="https://github.com/roo7k1d/github-repo-list/stargazers"><img src="https://img.shields.io/github/stars/roo7k1d/github-repo-list?color=yellow" alt="Stars Badge"/></a>
@@ -12,6 +12,8 @@
 <a href="https://github.com/roo7k1d/github-repo-list/"><img src="https://img.shields.io/tokei/lines/github/roo7k1d/github-repo-list?color=yellowgreen" alt="License Badge"/></a>
 <a href="https://github.com/roo7k1d/github-repo-list/releases"><img src="https://img.shields.io/github/v/release/roo7k1d/github-repo-list?color=success" alt="License Badge"/></a>
 <a href="https://github.com/roo7k1d/github-repo-list/commits"><img src="https://img.shields.io/github/last-commit/roo7k1d/github-repo-list" alt="License Badge"/></a>
+<br>
+<a href="https://discord.gg/QQaWvMkFbs"><img src="https://img.shields.io/discord/801802083757457418?logo=discord&label=discord"/></a>
 </div>
 <br>
 <p align="center"><a href="https://github.com/roo7k1dgithub-repo-list/issues">Report a Bug</a> | <a href="https://github.com/roo7k1d/github-repo-list/issues">Request a New Feature</a> | <a href="https://github.com/github-repo-list/pulls">Help Develop This Project</a> | <a href="https://ko-fi.com/RootK1d">Fund Me</a></p>
