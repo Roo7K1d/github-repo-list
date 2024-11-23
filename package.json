@@ -19,7 +19,7 @@
   "dependencies": {
     "@octokit/core": "^3.5.1",
     "circular-json": "^0.5.9",
-    "edit-json-file": "^1.6.0",
+    "edit-json-file": "^1.7.0",
     "ejs": "^3.1.6",
     "express": "^4.18.2",
     "github-api": "^3.4.0",
